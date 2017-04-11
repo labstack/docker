@@ -1,0 +1,17 @@
+NAME = emq
+VERSION = 2.1.0
+IMAGE = labstack/$(NAME)
+EMQTT = emqttd-docker-v$(VERSION)
+
+build:
+	wget http://emqtt.io/static/brokers/$(EMQTT).zip
+	unzip $(EMQTT).zip
+	docker load < $(EMQTT)
+	docker tag $(EMQTT) $(IMAGE):$(VERSION)
+	docker tag $(EMQTT) $(IMAGE):latest
+	rm -rf emqttd-docker*
+
+push: build
+	docker push $(IMAGE)
+
+.PHONY: build push
