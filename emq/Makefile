@@ -1,5 +1,5 @@
 NAME = emq
-VERSION = 2.1.0
+VERSION = 2.2-rc.1
 IMAGE = labstack/$(NAME)
 EMQTT = emqttd-docker-v$(VERSION)
 
@@ -12,6 +12,7 @@ build:
 	rm -rf emqttd-docker*
 
 push: build
-	docker push $(IMAGE)
+	docker push $(IMAGE):$(VERSION)
+	docker push $(IMAGE):latest
 
 .PHONY: build push
