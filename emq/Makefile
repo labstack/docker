@@ -1,5 +1,5 @@
 NAME = emq
-VERSION = 2.3.6
+VERSION = 2.3.9
 IMAGE = labstack/$(NAME)
 EMQTT = emqttd-docker-v$(VERSION)
 
